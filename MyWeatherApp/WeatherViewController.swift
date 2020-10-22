@@ -16,17 +16,16 @@ import SwiftyJSON
 class WeatherViewsController: UIViewController, CLLocationManagerDelegate, cityweatherdata{
     
 //    func newWeather(city: String, temperature: String)
-    func newWeather(temp: String, city: String, icon: UIImage){
-        CityLabel.text = city
-        WeatherLabel.text = temp
-        WeatherIcon.image = icon
-//        WeatherLabel.text = temperature
+    func newWeather(cityname: String){
+        
+        let params : [String : String] = ["q" : cityname, "appID" : APP_ID ]
+        
+        getWeatherData(url : WEATHER_URL, parameters : params)
     }
     
     let WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather"
     let APP_ID = "b93bb136bfe6419cc28c2518f7b53f10"
     var weatherDataModel = WeatherDataModel()
-    var weatherDataModel2 = WeatherDataModel2()
 
     @IBOutlet weak var WeatherLabel: UILabel!
     
