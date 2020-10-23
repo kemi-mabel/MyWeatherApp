@@ -24,7 +24,7 @@ class WeatherViewsController: UIViewController, CLLocationManagerDelegate, cityw
     }
     
     let WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather"
-    let APP_ID = "b93bb136bfe6419cc28c2518f7b53f10"
+    let APP_ID = ""
     var weatherDataModel = WeatherDataModel()
 
     @IBOutlet weak var WeatherLabel: UILabel!
