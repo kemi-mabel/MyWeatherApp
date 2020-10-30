@@ -15,7 +15,6 @@ import SwiftyJSON
 
 class WeatherViewsController: UIViewController, CLLocationManagerDelegate, cityweatherdata{
     
-//    func newWeather(city: String, temperature: String)
     func newWeather(cityname: String){
         
         let params : [String : String] = ["q" : cityname, "appID" : APP_ID ]
@@ -36,6 +35,20 @@ class WeatherViewsController: UIViewController, CLLocationManagerDelegate, cityw
     @IBAction func SwitchButton(_ sender: Any) {
         performSegue(withIdentifier: "cityweather", sender: self)
     }
+    
+    @IBAction func tempSwitch(_ sender: UISwitch) {
+        stateChanged(switchState: stateSwitch)
+//        if stateSwitch.isOn{
+////            WeatherLabel.text = "\(weatherDataModel.temperture)°c"
+//        } else {
+//            WeatherLabel.text = "\(weatherDataModel.ktemp)°k"
+//        }
+        
+    }
+        
+    @IBOutlet weak var stateSwitch: UISwitch!
+    
+
     
     
     //TODO: Declare instance variables here
@@ -106,28 +119,51 @@ class WeatherViewsController: UIViewController, CLLocationManagerDelegate, cityw
         
         //optional  binding
         if let tempResult = json["main"]["temp"].double {
-        
+        weatherDataModel.ktemp = Int(tempResult)
         weatherDataModel.temperture = Int(tempResult - 273.15)
         weatherDataModel.city = json["name"].stringValue
         weatherDataModel.condition = json["weather"][0]["id"].intValue
         weatherDataModel.WeatherIconName = weatherDataModel.UpdateWeatherIcon(condition: weatherDataModel.condition)
-        
          UpdateUIWithWeatherData()
         } else{
             CityLabel.text = "Weather  unavailable"
         }
         
     }
+    
+                
     //MARK: UIUPDATE
     func UpdateUIWithWeatherData(){
         CityLabel.text = weatherDataModel.city
 //        WeatherLabel.text = String(weatherDataModel.temperture)
         WeatherLabel.text = "\(weatherDataModel.temperture)°c"
         WeatherIcon.image  = UIImage(named: weatherDataModel.WeatherIconName)
-         
+        
         
     }
-    
+    enum Tempunit {
+       case Celcius
+       case Kelvin
+    }
+
+//
+//    temperature = .Celcius
+    func stateChanged(switchState: UISwitch) {
+        var temperature = Tempunit.Celcius;
+        
+        if stateSwitch.isOn{
+            temperature = .Celcius
+                
+        } else {
+            temperature = .Kelvin            }
+        
+        switch temperature {
+           case .Celcius:
+                WeatherLabel.text = "\(weatherDataModel.temperture)°c"
+            case .Kelvin:
+                WeatherLabel.text = "\(weatherDataModel.ktemp)°k"
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "cityweather" {
@@ -138,5 +174,7 @@ class WeatherViewsController: UIViewController, CLLocationManagerDelegate, cityw
         
     }
 
+
 }
+    
 

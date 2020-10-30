@@ -15,6 +15,7 @@ class WeatherDataModel{
     var condition : Int = 0
     var city : String = ""
     var WeatherIconName : String = ""
+    var ktemp : Int = 0
     
     func UpdateWeatherIcon(condition : Int) -> String {
         switch condition {

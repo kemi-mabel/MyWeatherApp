@@ -46,10 +46,17 @@
                                     <segue destination="nhb-Tn-PaL" kind="show" identifier="cityweather" id="5lJ-vM-Ki6"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Sn-6h-dnv">
+                                <rect key="frame" x="328" y="378" width="51" height="31"/>
+                                <connections>
+                                    <action selector="tempSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="zf4-jB-E57"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Sn-6h-dnv" secondAttribute="trailing" constant="37" id="0na-f6-4d0"/>
                             <constraint firstItem="hIu-CQ-JTu" firstAttribute="centerX" secondItem="WKy-q8-xHp" secondAttribute="centerX" id="1rt-pL-vca"/>
                             <constraint firstItem="WKy-q8-xHp" firstAttribute="top" secondItem="tLa-d8-SDT" secondAttribute="bottom" constant="34" id="3QT-5r-m5u"/>
                             <constraint firstItem="hIu-CQ-JTu" firstAttribute="top" secondItem="WKy-q8-xHp" secondAttribute="bottom" constant="50" id="AHA-yo-uLs"/>
@@ -61,6 +68,7 @@
                             <constraint firstItem="soj-Vc-AQF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-44" id="SX4-P8-O39"/>
                             <constraint firstItem="WKy-q8-xHp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="bhV-Nv-4I8"/>
                             <constraint firstItem="soj-Vc-AQF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="oNb-xE-oES"/>
+                            <constraint firstItem="tLa-d8-SDT" firstAttribute="top" secondItem="2Sn-6h-dnv" secondAttribute="bottom" constant="8" symbolic="YES" id="pq8-hc-b6R"/>
                             <constraint firstItem="hIu-CQ-JTu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="xP9-t6-9BA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WKy-q8-xHp" secondAttribute="trailing" constant="50" id="xh6-WO-bho"/>
                             <constraint firstItem="hIu-CQ-JTu" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="yB6-OO-pl1"/>
@@ -70,6 +78,7 @@
                         <outlet property="CityLabel" destination="hIu-CQ-JTu" id="Hgd-ST-2NU"/>
                         <outlet property="WeatherIcon" destination="WKy-q8-xHp" id="04s-ku-O98"/>
                         <outlet property="WeatherLabel" destination="tLa-d8-SDT" id="zF7-tr-aUv"/>
+                        <outlet property="stateSwitch" destination="2Sn-6h-dnv" id="R8d-9V-m3I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
